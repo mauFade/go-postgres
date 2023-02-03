@@ -56,3 +56,11 @@ func Load() error {
 
 	return nil
 }
+
+func getDatabase() dbConfig {
+	return cfg.database
+}
+
+func getApiPort() string {
+	return cfg.api.port
+}
