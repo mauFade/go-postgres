@@ -5,20 +5,20 @@ import "github.com/spf13/viper"
 var cfg *config
 
 type config struct {
-	api      apiConfig
-	database dbConfig
+	Api      apiConfig
+	Database dbConfig
 }
 
 type apiConfig struct {
-	port string
+	Port string
 }
 
 type dbConfig struct {
-	host     string
-	port     string
-	user     string
-	password string
-	database string
+	Host     string
+	Port     string
+	User     string
+	Password string
+	Database string
 }
 
 func init() {
@@ -42,25 +42,25 @@ func Load() error {
 
 	cfg = new(config)
 
-	cfg.api = apiConfig{
-		port: viper.GetString("api.port"),
+	cfg.Api = apiConfig{
+		Port: viper.GetString("api.port"),
 	}
 
-	cfg.database = dbConfig{
-		host:     viper.GetString("database.host"),
-		port:     viper.GetString("database.port"),
-		user:     viper.GetString("database.user"),
-		password: viper.GetString("database.password"),
-		database: viper.GetString("database.database"),
+	cfg.Database = dbConfig{
+		Host:     viper.GetString("database.host"),
+		Port:     viper.GetString("database.port"),
+		User:     viper.GetString("database.user"),
+		Password: viper.GetString("database.password"),
+		Database: viper.GetString("database.database"),
 	}
 
 	return nil
 }
 
-func getDatabase() dbConfig {
-	return cfg.database
+func GetDatabase() dbConfig {
+	return cfg.Database
 }
 
-func getApiPort() string {
-	return cfg.api.port
+func GetApiPort() string {
+	return cfg.Api.Port
 }
